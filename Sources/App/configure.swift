@@ -17,7 +17,10 @@ public func configure(_ app: Application) throws {
     ), as: .psql)
 
 
-    app.views.use(.leaf)
+    app.migrations.add(CreateCustomers())
+    try app.autoMigrate().wait()
+    
+     app.views.use(.leaf)
 
     
 

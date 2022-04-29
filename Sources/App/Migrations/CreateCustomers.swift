@@ -7,14 +7,20 @@
 
 import Fluent
 
+//
 struct CreateCustomers: Migration {
     func prepare(on database: Database) -> EventLoopFuture<Void> {
-        <#code#>
+    
+        return database.schema("customers")
+            .id()
+        
+     
+            .field("name", .string, .required)
+        
+            .create()
     }
     
     func revert(on database: Database) -> EventLoopFuture<Void> {
-        <#code#>
+        return database.schema("customers").delete()
     }
-    
-    
 }
