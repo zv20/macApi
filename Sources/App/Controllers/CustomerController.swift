@@ -14,7 +14,7 @@ struct CustomerController: RouteCollection {
         customers.get(use: index)
         customers.post(use: create)
         customers.put(use: update)
-        customers.group("customerID")  { customer in
+        customers.group(":customerID")  { customer in
             customer.delete(use: delete)
         }
     }
