@@ -17,10 +17,13 @@ final class Customer: Model, Content {
     @Field(key: "name")
     var name: String
     
+    @Field(key: "number2")
+    var number2: Int
     init() { }
     
-    init (id: UUID? = nil, name: String) {
+    init (id: UUID? = nil, name: String, number2: Int) {
         self.id = id
-        self.name = name 
+        self.name = name
+        self.number2 = number2
     }
 }

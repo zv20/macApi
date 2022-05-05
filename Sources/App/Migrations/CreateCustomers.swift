@@ -17,6 +17,7 @@ struct CreateCustomers: Migration {
      
             .field("name", .string, .required)
         
+            .field("number2", .int)
             .create()
     }
     
