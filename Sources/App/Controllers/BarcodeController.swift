@@ -12,7 +12,7 @@ import Vapor
 
 struct BarcodeController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
-        let battery = routes.grouped("batterys")
+        let battery = routes.grouped("barcodes")
         battery.get(use: index)
         battery.post(use: create)
        // battery.put(use: update)
