@@ -22,14 +22,14 @@ struct BarcodeController: RouteCollection {
     }
     
     // GET request
-    func index(req: Request) throws -> EventLoopFuture<[Battery]> {
-        return Battery.query(on: req.db).all()
+    func index(req: Request) throws -> EventLoopFuture<[Barcode]> {
+        return Barcode.query(on: req.db).all()
     }
     
     // POST Request /customer route
        func create(req: Request) throws -> EventLoopFuture<HTTPStatus> {
-           let battery = try req.content.decode(Battery.self)
-           return battery.save(on: req.db).transform(to: .ok)
+           let barcode = try req.content.decode(Barcode.self)
+           return barcode.save(on: req.db).transform(to: .ok)
        }
    // PUT Request /customer routs
 //
