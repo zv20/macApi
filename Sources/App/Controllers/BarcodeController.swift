@@ -5,16 +5,16 @@
 //  Created by Zhivko Vanev on 20.05.22.
 //
 
-import Foundation
+
 
 import Fluent
 import Vapor
 
 struct BarcodeController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
-        let battery = routes.grouped("barcodes")
-        battery.get(use: index)
-        battery.post(use: create)
+        let barcode = routes.grouped("barcodes")
+        barcode.get(use: index)
+        barcode.post(use: create)
        // battery.put(use: update)
 //        battery.group(":batteryID")  { battery in
 //        battery.delete(use: delete)
