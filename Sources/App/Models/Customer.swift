@@ -19,6 +19,8 @@ final class Customer: Model, Content {
     
     @Field(key: "number2")
     var number2: Int
+    
+    
     init() { }
     
     init (id: UUID? = nil, name: String, number2: Int) {

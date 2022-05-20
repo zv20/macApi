@@ -9,10 +9,13 @@ func routes(_ app: Application) throws {
     app.get("hello") { req -> String in
         return "Hello, world!"
     }
-    
+    app.get("Best") { req -> String in
+        return "Hi Mt Friends"
+    }
     
     try app.register(collection: MemberController())
     try app.register(collection: CustomerController())
-    
+    try app.register(collection: BarcodeController())
+    try app.register(collection: BatteryController())
 
 }

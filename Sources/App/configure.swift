@@ -23,11 +23,11 @@ public func configure(_ app: Application) throws {
         password: Environment.get("DATABASE_PASSWORD") ?? "vapor_password",
         database: Environment.get("DATABASE_NAME") ?? "vapor_database"
     ), as: .psql)
-   
-    
+    app.migrations.add(CreateBarcodes())
+    app.migrations.add(CreateBattery())
     app.migrations.add(CreateCustomers())
     app.migrations.add(CreateMembers())
-    try app.autoRevert().wait()
+// try app.autoRevert().wait()
     try app.autoMigrate().wait()
      
    

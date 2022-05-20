@@ -28,6 +28,8 @@ struct CreateMembers: Migration {
         
             .field("memberUUID", .string, .required)
         
+            
+        
             .create()
     }
     
@@ -38,5 +40,6 @@ struct CreateMembers: Migration {
         return database.schema("members").delete()
         
     }
+  
     
 }

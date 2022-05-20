@@ -44,4 +44,5 @@ final class Member: Model, Content {
         self.school = school
         self.memberUUID = memberUUID
     }
+    
 }
