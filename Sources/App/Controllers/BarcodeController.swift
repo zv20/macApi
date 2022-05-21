@@ -36,7 +36,7 @@ struct BarcodeController: RouteCollection {
         return Barcode.find(barcode.id, on: req.db)
             .unwrap(or: Abort(.notFound))
             .flatMap {
-                $0.barcode = barcode.barcode
+                $0.codeB = barcode.codeB
                 return $0.update(on: req.db).transform(to: .ok)
                 
         }

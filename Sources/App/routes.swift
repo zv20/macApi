@@ -14,7 +14,7 @@ func routes(_ app: Application) throws {
     }
     
     try app.register(collection: MemberController())
-    try app.register(collection: CustomerController())
+   
     try app.register(collection: BarcodeController())
 
 }

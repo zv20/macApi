@@ -9,22 +9,22 @@ import Fluent
 import Vapor
 
 final class Barcode: Model, Content {
-    static let schema = "barcode"
+    static let schema = "barcodes"
     
     @ID(key: .id)
     var id: UUID?
     
-    @Field(key: "barcode")
-    var barcode: String
+    @Field(key: "codeB")
+    var codeB: String
     
    
     
     
     init() { }
     
-    init (id: UUID? = nil, barcode: String) {
+    init (id: UUID? = nil, codeB: String) {
         self.id = id
-        self.barcode = barcode
+        self.codeB = codeB
        
     }
 }

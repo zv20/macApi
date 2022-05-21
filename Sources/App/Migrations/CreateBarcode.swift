@@ -20,7 +20,7 @@ struct CreateBarcodes: Migration {
      
         
         
-            .field("barcode", .string, .required)
+            .field("codeB", .string, .required)
             
             .create()
     }
