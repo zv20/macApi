@@ -10,11 +10,11 @@ import Vapor
 
 struct BarcodeController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
-        let barcode = routes.grouped("barcodes")
-        barcode.get(use: index)
-        barcode.post(use: create)
-        barcode.put(use: update)
-        barcode.group(":barcodeID")  { barcode in
+        let barcodes = routes.grouped("barcodes")
+        barcodes.get(use: index)
+        barcodes.post(use: create)
+        barcodes.put(use: update)
+        barcodes.group(":barcodeID")  { barcode in
             barcode.delete(use: delete)
         }
     }
