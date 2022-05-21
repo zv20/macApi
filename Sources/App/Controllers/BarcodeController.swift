@@ -1,20 +1,21 @@
 //
-//  CustomerController.swift
-// hello git hub 
-//  Created by Zhivko Vanev on 28.04.22.
+//  File.swift
+//  
+//
+//  Created by Zhivko Vanev on 20.05.22.
 //
 
 import Fluent
 import Vapor
 
-struct CustomerController: RouteCollection {
+struct BarcodeController: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
-        let customers = routes.grouped("customers")
-        customers.get(use: index)
-        customers.post(use: create)
-        customers.put(use: update)
-        customers.group(":customerID")  { customer in
-            customer.delete(use: delete)
+        let barcode = routes.grouped("barcodes")
+        barcode.get(use: index)
+        barcode.post(use: create)
+        barcode.put(use: update)
+        barcode.group(":barcodeID")  { barcode in
+            barcode.delete(use: delete)
         }
     }
     
@@ -25,17 +26,17 @@ struct CustomerController: RouteCollection {
     
     // POST Request /customer route
        func create(req: Request) throws -> EventLoopFuture<HTTPStatus> {
-           let customer = try req.content.decode(Barcode.self)
-           return customer.save(on: req.db).transform(to: .ok)
+           let barcode = try req.content.decode(Barcode.self)
+           return barcode.save(on: req.db).transform(to: .ok)
        }
    // PUT Request /customer routs
     func update(req: Request) throws -> EventLoopFuture<HTTPStatus> {
-        let customer = try req.content.decode(Barcode.self)
+        let barcode = try req.content.decode(Barcode.self)
         
-        return Barcode.find(customer.id, on: req.db)
+        return Barcode.find(barcode.id, on: req.db)
             .unwrap(or: Abort(.notFound))
             .flatMap {
-                $0.barcode = customer.barcode
+                $0.barcode = barcode.barcode
                 return $0.update(on: req.db).transform(to: .ok)
                 
         }
@@ -43,7 +44,7 @@ struct CustomerController: RouteCollection {
         //DELETE Request /customer/id route
         
         func delete(req: Request) throws -> EventLoopFuture<HTTPStatus> {
-            Barcode.find(req.parameters.get("customerID"), on: req.db)
+            Barcode.find(req.parameters.get("barcodeID"), on: req.db)
                 .unwrap(or: Abort(.notFound))
                 .flatMap { $0.delete(on: req.db) }
                     .transform(to: .ok)

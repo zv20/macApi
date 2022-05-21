@@ -25,7 +25,7 @@ public func configure(_ app: Application) throws {
     ), as: .psql)
     
     app.migrations.add(CreateBarcodes())
-    app.migrations.add(CreateBattery())
+   
     app.migrations.add(CreateCustomers())
     app.migrations.add(CreateMembers())
 // try app.autoRevert().wait()
